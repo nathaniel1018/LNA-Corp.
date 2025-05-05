@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LNA Corp</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#d3d3af] font-sans">
+
+  <!-- Header -->
+  <header class="bg-green-700 text-white p-6 flex flex-col md:flex-row justify-between items-start md:items-center">
+    <div>
+      <h1 class="text-3xl font-bold">LNA Corp.</h1>
+      <p class="italic">Quality, integrity, and vision</p>
+    </div>
+    <form id="loginForm" class="mt-4 md:mt-0 space-y-2 text-right">
+      <div>
+        <label class="block text-sm">Email</label>
+        <input type="text" name="email" class="w-52 px-2 py-1 rounded text-black" placeholder="Value" required />
+      </div>
+      <div>
+        <label class="block text-sm">Password</label>
+        <input type="password" name="password" class="w-52 px-2 py-1 rounded text-black" placeholder="Value" required />
+      </div>
+      <button type="submit" class="bg-black text-white px-4 py-1 rounded">Sign In</button>
+      <p class="text-sm mt-1">
+        <a href="#" class="underline">Forgot password?</a>
+        <label class="ml-2 text-sm">
+          <input type="checkbox" name="remember" class="mr-1">Remember me
+        </label>
+      </p>
+    </form>
+  </header>
+
+  <!-- Navbar -->
+  <nav class="bg-[#e2e0c7] text-center py-4">
+    <div class="space-x-3">
+      <button class="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400">HOME</button>
+      <button class="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400">PAGES</button>
+      <button class="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400">SERVICES</button>
+      <button class="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400">CONTACT</button>
+      <button class="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400">PROJECT</button>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <main class="flex flex-col md:flex-row items-center p-6 space-y-6 md:space-y-0 md:space-x-6">
+    <img src="insert.img" alt="Placeholder Image" class="w-full md:w-1/2 h-auto bg-gray-400" />
+    <div class="md:w-1/2 p-4">
+      <h2 class="text-2xl font-semibold mb-4">
+        Empowering your business with smart, secure, and seamless IT solutions—because your success is our priority.
+      </h2>
+      <button class="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400">Learn More</button>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="p-6 text-center text-sm text-gray-800">
+    <p>
+      At LNA Corp., we are dedicated to providing cutting-edge IT solutions that drive innovation, efficiency, and security for your business...
+    </p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    const loginForm = document.getElementById('loginForm');
+
+    loginForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const formData = new FormData(loginForm);
+      const data = Object.fromEntries(formData.entries());
+
+      localStorage.setItem('loginData', JSON.stringify(data));
+
+      const params = new URLSearchParams(data).toString();
+      const sharableUrl = `${window.location.origin}${window.location.pathname}?${params}`;
+
+      console.log('Login data saved to localStorage.');
+      console.log('Sharable URL:', sharableUrl);
+
+      alert('Login submitted! Check console for stored data and URL.');
+    });
+  </script>
+</body>
+</html>
+
